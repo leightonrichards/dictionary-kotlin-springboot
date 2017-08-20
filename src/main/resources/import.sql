@@ -1,5 +1,3 @@
-INSERT INTO restaurants (name, location, lat, lng) VALUES (    'test',    'Helsinki',    123,    456);
-INSERT INTO menus (restaurant_id, menu_date, title, menu_text) VALUES  (    1,    CURRENT_DATE(),    'Soups',    'Hello, World!');
 DROP TABLE words;
 CREATE TABLE words (id BIGINT IDENTITY, word varchar(25) NOT NULL,  word_type varchar(20) NOT NULL,  description text NOT NULL);
 

@@ -1,5 +1,6 @@
 package app
 
+import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
 import org.springframework.beans.factory.annotation.Autowired
@@ -21,5 +22,13 @@ class WordRepositoryTest {
         val count = wordRepository!!.count()
         System.out.println("number of words " + count)
         assertTrue(count == 187312L)
+    }
+
+    @Test
+    fun testWordLike() {
+        val wordList = wordRepository!!.findByWordLikeIgnoreCase("in_e_i%a%ce")
+        System.out.println("number of words like " + wordList.size)
+        assertTrue(wordList.size == 6)
+        assertEquals("Inheritance",wordList.get(0).word)
     }
 }

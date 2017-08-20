@@ -6,6 +6,8 @@ import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.Mockito.`when`
 import org.junit.Assert.assertEquals
+import org.mockito.Matchers
+import org.mockito.Mockito.any
 import org.mockito.runners.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
@@ -18,15 +20,15 @@ class WordServiceTest {
     private var wordService:WordService? = null;
 
     @Test
-    fun testStartsWith() {
+    fun testFindByWordLikeIgnoreCase() {
         givenWordRepository()
-        val resultList: List<Word>? = wordService?.startswith("abb")
-        assertEquals(17, resultList?.size)
+        val resultList: List<Word>? = wordService?.findByWordLikeIgnoreCase("abb")
+        assertEquals(38, resultList?.size)
     }
 
 
     private fun givenWordRepository() {
-        `when`(wordRepository?.findAll()).thenReturn(getListOfWords())
+        `when`(wordRepository?.findByWordLikeIgnoreCase(Matchers.anyString())).thenReturn(getListOfWords())
     }
 
     private fun getListOfWords(): List<Word> {
